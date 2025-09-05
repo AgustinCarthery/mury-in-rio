@@ -1,13 +1,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-size: 2em; 
+  font-size: 2em; /* base size for desktop */
   min-height: 100vh;
   background: url('../assets/rio-bg.webp') no-repeat center center fixed;
   background-size: cover;
   font-family: Arial, sans-serif;
 }
 
+/* Mobile overlay styles */
 .overlay {
   background: rgba(0,0,0,0.1);
   min-height: 100vh;
@@ -17,33 +18,67 @@ body {
   align-items: center;
   color: #fff;
   position: relative;
-    z-index: 2;
+  z-index: 2;
+  padding: 1rem; /* add padding for smaller screens */
 }
 
 h1 {
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
   text-shadow: 2px 2px 8px #000;
+  font-size: clamp(1.5rem, 5vw, 3rem); /* responsive font */
+  text-align: center;
 }
 
 #countdown {
-  font-size: 2.5rem;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
   font-weight: bold;
   letter-spacing: 2px;
+  text-align: center;
 }
 
 #floating-hats {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .floating-hat {
-    position: absolute;
-    width: 200px;
-    transition: top 2s linear, left 2s linear;
-    opacity: 0.85;
+  position: absolute;
+  width: clamp(80px, 20vw, 200px); /* scales between mobile and desktop */
+  transition: top 2s linear, left 2s linear;
+  opacity: 0.85;
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 768px) {
+  body {
+    font-size: 1.2em; /* reduce base font size */
+    background-attachment: scroll; /* improve mobile performance */
+  }
+
+  .overlay {
+    padding: 1rem;
+  }
+
+  #countdown {
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 1em;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  #countdown {
+    font-size: 1.4rem;
+  }
 }

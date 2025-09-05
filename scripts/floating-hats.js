@@ -1,4 +1,4 @@
-const NUM_HATS = 6; // Number of hats you want
+const NUM_HATS = 10;
 const hatContainer = document.getElementById('floating-hats');
 const hats = [];
 
